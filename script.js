@@ -10,65 +10,46 @@ let characters = ['!','@','#','$','%','^','&', "*", '(', ')'];
 
 //console.log(generateBtn)
 function generatePassword(){
-    let length =prompt('How Many Digits?');
-    return "password"
+  
+  let password= "";
+  let passwordCon="";
 
-  if (length <8){
-    alert ("Password must be more than 8 digits");
-  }
+      let correctLength = false;
+let passwordLength;
+  while (correctLength === false) {
+    passwordLength = prompt("Please type a password length from 8-128 characters");
+    if (passwordLength >= 8 && passwordLength <= 128) {
+      correctLength = true;
+    } else {
+      correctLength = false;
+    };
+  };
 
-  if (length >128){
-    alert ('Password must be less than 128 digits');
+    let characterTypes =confirm ('Do you want to include uppercase, lower case and special characters?');
+    
+    if (characterTypes){
+      passwordCon += upper, lower, numbers, characters;
+    }
+
+    for (var i=0; i<length; i++){
+      password=passwordCon[math.floor(math.random()*passwordCon.length)]
+    }
+    return password
   }
    
-}
-function generatePassword(){
-  let characterTypes =prompt ('Do you want to include uppercase, lower case and special characters?');
-  return 'password'
-}
+
+
+
 // Write password to the #password input
 function writePassword() {
-  //console.log('Hello')
   var password = generatePassword();
-
-  var passwordText = document.querySelector("#password");
-//console.log(passwordText)
+  var passwordText = document.getElementById("#password");
   passwordText.value = password;
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-// // Write password to the #password input
-
-
-// function writePassword() {
-
-//     if (length < 8) {
-//       alert('Minimum of 8 digits');
-//       return null;
-      
-//     if (length > 128) 
-//       alert('maximum of 128 digits');
-//       return null;
-  
-
-  
-
-    
-      
-//     }
-
-// }
 
 
 
