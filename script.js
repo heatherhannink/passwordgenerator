@@ -12,27 +12,44 @@ let characters = ['!','@','#','$','%','^','&', "*", '(', ')'];
 function generatePassword(){
   
   let password= "";
-  let passwordCon="";
+  let passwordCon=[];
 
-      let correctLength = false;
+      
 let passwordLength;
-  while (correctLength === false) {
+  
     passwordLength = prompt("Please type a password length from 8-128 characters");
-    if (passwordLength >= 8 && passwordLength <= 128) {
-      correctLength = true;
-    } else {
-      correctLength = false;
-    };
-  };
-
-    let characterTypes =confirm ('Do you want to include uppercase, lower case and special characters?');
+    if (passwordLength < 8 || passwordLength > 128) {
+     alert ('Please make password between 8-128 characters');
+     return 
+    }
     
-    if (characterTypes){
-      passwordCon += upper, lower, numbers, characters;
+  
+
+    let characterUpper =confirm ('Do you want to include uppercase characters?');
+    let characterNumber =confirm ( 'Do you want to include numbers');  
+    let specialCharacter =confirm ('Do you want to include special characters?');
+    let characterLower =confirm ('Do you want to include lowercase characters?');
+
+    if (characterNumber){
+     passwordCon=passwordCon.concat(numbers);
     }
 
-    for (var i=0; i<length; i++){
-      password=passwordCon[math.floor(math.random()*passwordCon.length)]
+     if (characterUpper){
+      passwordCon=passwordCon.concat(upper);
+    }
+
+      if (specialCharacter){
+        passwordCon=passwordCon.concat(characters);
+    }
+
+    if (characterLower){
+      passwordCon=passwordCon.concat(lower);
+    }
+     
+    
+
+    for (var i=0; i<passwordLength; i++){
+      password += passwordCon[Math.floor(Math.random()*passwordCon.length)]
     }
     return password
   }
@@ -43,7 +60,7 @@ let passwordLength;
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.getElementById("#password");
+  var passwordText = document.getElementById("password");
   passwordText.value = password;
 
 }
